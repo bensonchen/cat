@@ -166,7 +166,7 @@ CAT主要由以下组件组成：
 		<idle-timeout>10m</idle-timeout>
 		<statement-cache-size>1000</statement-cache-size>
 		<properties>
-			<driver>com.mysql.jdbc.Driver</driver>
+			<driver>com.mysql.cj.jdbc.Driver</driver>
 			<url><![CDATA[jdbc:mysql://127.0.0.1:3306/cat]]></url>  <!-- 请替换为真实数据库URL及Port  -->
 			<user>root</user>  <!-- 请替换为真实数据库用户名  -->
 			<password>root</password>  <!-- 请替换为真实数据库密码  -->
