@@ -272,6 +272,7 @@ public class DefaultClientConfigManager implements LogEnabled, ClientConfigManag
 		try {
 			InputStream inputstream = Urls.forIO().readTimeout(2000).connectTimeout(1000).openStream(url);
 			String content = Files.forIO().readFrom(inputstream, "utf-8");
+			m_logger.info("<#> refreshConfig content : ["+content+"]");
 			KVConfig routerConfig = (KVConfig) m_jsonBuilder.parse(content.trim(), KVConfig.class);
 
 			m_routers = routerConfig.getValue("routers");
@@ -309,7 +310,7 @@ public class DefaultClientConfigManager implements LogEnabled, ClientConfigManag
 				}
 			}
 		} catch (Exception e) {
-			m_logger.warn("error when connect cat server config url " + url);
+			m_logger.error("error when connect cat server config url " + url, e);
 		}
 	}
 

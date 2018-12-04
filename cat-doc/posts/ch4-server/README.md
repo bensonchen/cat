@@ -62,7 +62,7 @@ CAT主要由以下组件组成：
 
 1. 初始化Mysql数据库，`一套CAT集群需要部署一个数据库`，数据库脚本script/CatApplication.sql
 2. （本机模式忽略）准备三台CAT服务器，IP假设为10.1.1.1，10.1.1.2，10.1.1.3，下面的集群模式安装会以这些IP为例
-3. 初始化/data/目录，配置几个配置文件/data/appdatas/cat/*.xml 几个配置文件，具体下面有详细说明
+3. 初始化/data/目录，配置几个配置文件/data/apps/cat/datas/*.xml 几个配置文件，具体下面有详细说明
 4. `打包并重命名为cat.war`，放入tomcat容器webapps根目录下，并启动tomcat
 5. 修改服务器配置、及路由配置，重启tomcat
 
@@ -104,7 +104,7 @@ CAT主要由以下组件组成：
     对程序运行盘下的/data/appdatas/cat和/data/applogs/cat有读写权限。`例如cat服务运行在e盘的tomcat中，则需要对e:/data/appdatas/cat和e:/data/applogs/cat有读写权限。`
 
 
-#### **步骤3：** 配置/data/appdatas/cat/client.xml
+#### **步骤3：** 配置/data/apps/cat/datas/client.xml
 
 - 说明
 
@@ -154,7 +154,7 @@ CAT主要由以下组件组成：
     2. 注意2：`数据库编码使用utf8mb4，否则可能造成中文乱码等问题`
 
 
-#### **步骤5：** 配置/data/appdatas/cat/datasources.xml
+#### **步骤5：** 配置/data/apps/cat/datas/datasources.xml
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -296,7 +296,7 @@ CAT主要由以下组件组成：
              <property name="hdfs-enabled" value="false"/>
              <property name="remote-servers" value="127.0.0.1:8080"/>
           </properties>
-          <storage  local-base-dir="/data/appdatas/cat/bucket/" max-hdfs-storage-time="15" local-report-storage-time="7" local-logivew-storage-time="7">
+          <storage  local-base-dir="/data/apps/cat/datas/bucket/" max-hdfs-storage-time="15" local-report-storage-time="7" local-logivew-storage-time="7">
             <hdfs id="logview" max-size="128M" server-uri="hdfs://10.1.77.86/user/cat" base-dir="logview"/>
             <hdfs id="dump" max-size="128M" server-uri="hdfs://10.1.77.86/user/cat" base-dir="dump"/>
             <hdfs id="remote" max-size="128M" server-uri="hdfs://10.1.77.86/user/cat" base-dir="remote"/>
@@ -341,7 +341,7 @@ CAT主要由以下组件组成：
              <property name="hdfs-enabled" value="false"/>
              <property name="remote-servers" value="10.1.1.1:8080,10.1.1.2:8080,10.1.1.3:8080"/>
           </properties>
-          <storage  local-base-dir="/data/appdatas/cat/bucket/" max-hdfs-storage-time="15" local-report-storage-time="7" local-logivew-storage-time="7">
+          <storage  local-base-dir="/data/apps/cat/datas/bucket/" max-hdfs-storage-time="15" local-report-storage-time="7" local-logivew-storage-time="7">
             <hdfs id="logview" max-size="128M" server-uri="hdfs://10.1.77.86/user/cat" base-dir="logview"/>
             <hdfs id="dump" max-size="128M" server-uri="hdfs://10.1.77.86/user/cat" base-dir="dump"/>
             <hdfs id="remote" max-size="128M" server-uri="hdfs://10.1.77.86/user/cat" base-dir="remote"/>
@@ -397,8 +397,8 @@ CAT主要由以下组件组成：
 #### **步骤10：** 本地开发环境运行CAT
 
 1.	请参照上述步骤，进行如下配置：
-  - 配置/data/appdatas/cat/client.xml文件
-  - 配置/data/appdatas/cat/datasources.xml文件
+  - 配置/data/apps/cat/datas/client.xml文件
+  - 配置/data/apps/cat/datas/datasources.xml文件
   - 服务器配置 http://{ip:port}/cat/s/config?op=serverConfigUpdate （注意本地节点的角色，job-machine&alarm-machine都可以配置为true，以便于debug）
 2.	根据ide的类型，在cat目录中执行 mvn eclipse:eclipse 或者 mvn idea:idea，此步骤会生成一些代码文件，直接导入到工程会发现找不到类
 3.	如果ide是eclipse，将源码以普通项目到入eclipse中，注意不要以maven项目导入工程

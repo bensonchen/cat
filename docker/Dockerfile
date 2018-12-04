@@ -47,7 +47,7 @@ WORKDIR /root/workspace/cat
 
 RUN set -ex && mvn clean install -DskipTests
 RUN cp cat-home/target/*.war $CATALINA_HOME/webapps/cat.war
-ADD docker/datasources.xml /data/appdatas/cat/datasources.xml
+ADD docker/datasources.xml /data/apps/cat/datas/datasources.xml
 ADD docker/datasources.sh /datasources.sh
 RUN sed -i "s/port=\"8080\"/port=\"8080\"\ URIEncoding=\"utf-8\"/g" $CATALINA_HOME/conf/server.xml
 

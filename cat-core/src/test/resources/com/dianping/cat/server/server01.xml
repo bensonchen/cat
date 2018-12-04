@@ -9,7 +9,7 @@
       <property name="remote-servers" value="127.0.0.1:2281"/>
       <property name="ldap" value="ldap://ldap.dianpingoa.com/DC=dianpingoa,DC=com"/>
    </properties>
-   <storage local-base-dir="/data/appdatas/cat/bucket/" max-hdfs-storage-time="15" local-report-storage-time="2" local-logivew-storage-time="1" har-mode="true" upload-thread="5">
+   <storage local-base-dir="/data/apps/cat/datas/bucket/" max-hdfs-storage-time="15" local-report-storage-time="2" local-logivew-storage-time="1" har-mode="true" upload-thread="5">
       <hdfs id="logview" max-size="128M" server-uri="hdfs://10.1.77.86/" base-dir="/user/cat/logview"/>
       <hdfs id="dump" max-size="128M" server-uri="hdfs://10.1.77.86/" base-dir="/user/cat/dump"/>
       <harfs id="dump" max-size="128M" server-uri="har://hdfs-10.1.77.86/" base-dir="/user/cat/dump"/>
@@ -17,7 +17,7 @@
          <property name="hadoop.security.authentication" value="kerberos"/>
          <property name="dfs.namenode.kerberos.principal" value="hadoop/dev80.hadoop@DIANPING.COM"/>
          <property name="dfs.cat.kerberos.principal" value="cat@DIANPING.COM"/>
-         <property name="dfs.cat.keytab.file" value="/data/appdatas/cat/cat.keytab"/>
+         <property name="dfs.cat.keytab.file" value="/data/apps/cat/datas/cat.keytab"/>
          <property name="java.security.krb5.realm" value="DIANPING.COM"/>
          <property name="java.security.krb5.kdc" value="dev80.hadoop"/>
       </properties>

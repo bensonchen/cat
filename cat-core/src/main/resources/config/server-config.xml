@@ -9,14 +9,14 @@
          <property name="hdfs-enabled" value="false"/>
          <property name="remote-servers" value="127.0.0.1:8080"/>
       </properties>
-      <storage local-base-dir="/data/appdatas/cat/bucket/" max-hdfs-storage-time="15" local-report-storage-time="2" local-logivew-storage-time="1" har-mode="true" upload-thread="5">
+      <storage local-base-dir="/data/apps/cat/datas/bucket/" max-hdfs-storage-time="15" local-report-storage-time="2" local-logivew-storage-time="1" har-mode="true" upload-thread="5">
          <hdfs id="dump" max-size="128M" server-uri="hdfs://127.0.0.1/" base-dir="/user/cat/dump"/>
          <harfs id="dump" max-size="128M" server-uri="har://127.0.0.1/" base-dir="/user/cat/dump"/>
          <properties>
             <property name="hadoop.security.authentication" value="false"/>
             <property name="dfs.namenode.kerberos.principal" value="hadoop/dev80.hadoop@testserver.com"/>
             <property name="dfs.cat.kerberos.principal" value="cat@testserver.com"/>
-            <property name="dfs.cat.keytab.file" value="/data/appdatas/cat/cat.keytab"/>
+            <property name="dfs.cat.keytab.file" value="/data/apps/cat/datas/cat.keytab"/>
             <property name="java.security.krb5.realm" value="value1"/>
             <property name="java.security.krb5.kdc" value="value2"/>
          </properties>

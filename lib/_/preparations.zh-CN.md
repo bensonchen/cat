@@ -1,6 +1,6 @@
 # 启动 cat 客户端前的准备工作
 
-1. 创建 `/data/appdatas/cat` 目录
+1. 创建 `/data/apps/cat/datas` 目录
 
     确保你具有这个目录的读写权限。
 
@@ -8,7 +8,7 @@
 
     这个目录是用于存放运行时日志的，这将会对调试提供很大帮助，同样需要读写权限。
 
-3. 创建 `/data/appdatas/cat/client.xml`，内容如下
+3. 创建 `/data/apps/cat/datas/client.xml`，内容如下
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>

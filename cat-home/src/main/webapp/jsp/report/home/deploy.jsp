@@ -5,7 +5,7 @@
 <p>3、在所有cat服务器上安装tomcat，启动端口默认设定为8080。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tomcat启动参数参考：-Xms20288m -Xmx20288m -XX:PermSize=256m -XX:MaxPermSize=256m -XX:NewSize=10144m -XX:MaxNewSize=10144m -XX:SurvivorRatio=10</p>
 <p>4、确保所有cat客户端以及服务器对于/data目录具有读写权限。</p>
-<p>5、配置所有客户端和服务端的配置文件client.xml，文件路径/data/appdatas/cat/client.xml。</p>
+<p>5、配置所有客户端和服务端的配置文件client.xml，文件路径/data/apps/cat/datas/client.xml。</p>
 <xmp class="well">
 	<config mode="client">
 	    	<servers>
@@ -15,7 +15,7 @@
 	    	</servers>
 	</config>
 </xmp>
-<p>6、配置服务端的数据库配置datasources.xml，文件路径/data/appdatas/cat/datasources.xml,需要替换对应的线上配置。</p>
+<p>6、配置服务端的数据库配置datasources.xml，文件路径/data/apps/cat/datas/datasources.xml,需要替换对应的线上配置。</p>
 <xmp class="well">
 <data-sources>
 	<data-source id="cat">
@@ -33,7 +33,7 @@
 	</data-source>
 </data-sources>
 </xmp> 
-<p>7、配置服务端的server.xml，文件路径/data/appdatas/cat/server.xml。</p>
+<p>7、配置服务端的server.xml，文件路径/data/apps/cat/datas/server.xml。</p>
 <xmp class="well">
 <!-- Configuration for production environment -->
 <!-- Note: -->
@@ -46,7 +46,7 @@
 <!-- 7. Please set ldap info for login the system. -->
 <!-- 8. Please config remote-server if you have many cat servers. -->
 <config local-mode="false" hdfs-machine="false" job-machine="false" alert-machine="false">
-	<storage  local-base-dir="/data/appdatas/cat/bucket/" max-hdfs-storage-time="15" local-report-storage-time="7" local-logivew-storage-time="7">
+	<storage  local-base-dir="/data/apps/cat/datas/bucket/" max-hdfs-storage-time="15" local-report-storage-time="7" local-logivew-storage-time="7">
 		<hdfs id="logview" max-size="128M" server-uri="hdfs://${hdfs_path1}" base-dir="logview"/>
 		<hdfs id="dump" max-size="128M" server-uri="hdfs://${hdfs_path2}" base-dir="dump"/>
 		<hdfs id="remote" max-size="128M" server-uri="hdfs://${hdfs_path3}" base-dir="remote"/>

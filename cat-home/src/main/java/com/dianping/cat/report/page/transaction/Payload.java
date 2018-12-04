@@ -129,4 +129,8 @@ public class Payload extends AbstractReportPayload<Action, ReportPage> {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return "m_action:"+m_action+", m_name"+m_name+", m_group:"+m_group+", m_queryName:"+m_queryName+", m_type:"+m_type;
+	}
 }

@@ -1,6 +1,6 @@
 # Preparations before initializing cat client.
 
-1. Create `/data/appdatas/cat` directory.
+1. Create `/data/apps/cat/datas` directory.
 
     Make sure that you have **read and write (>=0644)** permission of the created directory.
 
@@ -8,7 +8,7 @@
 
     This directory is used for preserving debug logs, which can be very useful while debugging, **read and write** permission is also required.
 
-3. Create `/data/appdatas/cat/client.xml` with the following contents.
+3. Create `/data/apps/cat/datas/client.xml` with the following contents.
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>

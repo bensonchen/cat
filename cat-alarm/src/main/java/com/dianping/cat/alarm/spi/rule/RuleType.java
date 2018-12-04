@@ -464,7 +464,7 @@ public enum RuleType {
 	},
 
 	UserDefine {
-		private static final String USER_DEFINED_FOLDER = "/data/appdatas/cat/user_defined_class/";
+		private static final String USER_DEFINED_FOLDER = "/data/apps/cat/datas/user_defined_class/";
 
 		private static final String USER_DEFINED_CLASS_NAME = "UserDefinedRule.java";
 

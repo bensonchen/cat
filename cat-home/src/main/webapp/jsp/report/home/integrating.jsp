@@ -45,12 +45,12 @@
 	   <dd><p class="detailContent">在resources资源文件META-INF下，注意是<span class="text-danger">src/main/resources/META-INF/</span>文件夹，
 	  而不是<span class="text-danger">webapps下的那个META-INF</span>,添加<span class="text-danger">app.properties</span>，加上domain配置，如：<span class="text-danger">app.name=tuangou-web</span></p>
 	  </dd>
-  <dt><h5 class="text-success">4./data/appdatas/cat/目录下，新建一个client.xml文件(线上环境是OP配置)</h5></dt>
+  <dt><h5 class="text-success">4./data/apps/cat/datas/目录下，新建一个client.xml文件(线上环境是OP配置)</h5></dt>
   <dd>
-  <p class="detailContent">如果系统是windows环境，则在eclipse运行的盘，比如D盘，新建/data/appdatas/cat/目录，新建client.xml文件</p>
+  <p class="detailContent">如果系统是windows环境，则在eclipse运行的盘，比如D盘，新建/data/apps/cat/datas/目录，新建client.xml文件</p>
 	
   <p>项目文件中srouce中的app.properties,此文件代表了这个项目我是谁,比如项目的名字tuangou-web。</p>
-  <p>/data/appdatas/cat/client.xml,此文件有OP控制,这里的Domain名字用来做开关，如果一台机器上部署了多个应用，可以指定把一个应用的监控关闭。</p>
+  <p>/data/apps/cat/datas/client.xml,此文件有OP控制,这里的Domain名字用来做开关，如果一台机器上部署了多个应用，可以指定把一个应用的监控关闭。</p>
   
   <xmp class="well">
       <config mode="client">

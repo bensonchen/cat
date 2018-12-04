@@ -105,7 +105,7 @@ public class Cat {
 	}
 
 	public static String getCatHome() {
-		String catHome = CatPropertyProvider.INST.getProperty("CAT_HOME", "/data/appdatas/cat/");
+		String catHome = CatPropertyProvider.INST.getProperty("CAT_HOME", "/data/apps/cat/datas/");
 
 		return catHome;
 	}

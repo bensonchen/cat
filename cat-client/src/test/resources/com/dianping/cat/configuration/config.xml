@@ -10,7 +10,7 @@
    <domain id="Review" ip="192.168.8.1" enabled="false" max-message-size="1000"/>
    <bind ip="192.168.8.21" port="2280"/>
    <properties>
-      <property name="failure-base-dir">/data/appdatas/cat/report/failure/</property>
-      <property name="transaction-base-dir">/data/appdatas/cat/report/transaction/</property>
+      <property name="failure-base-dir">/data/apps/cat/datas/report/failure/</property>
+      <property name="transaction-base-dir">/data/apps/cat/datas/report/transaction/</property>
    </properties>
 </config>

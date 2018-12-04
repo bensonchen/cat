@@ -144,7 +144,7 @@ public class Cat {
     }
 
     public static String getCatHome() {
-        return Properties.forString().fromEnv().fromSystem().getProperty("CAT_HOME", "/data/appdatas/cat/");
+        return Properties.forString().fromEnv().fromSystem().getProperty("CAT_HOME", "/data/apps/cat/datas/");
     }
 
     public static String getCurrentMessageId() {
