@@ -29,6 +29,7 @@ import com.dianping.cat.report.service.ModelRequest;
 import com.dianping.cat.report.service.ModelResponse;
 
 public class CompositeTransactionService extends BaseCompositeModelService<TransactionReport> {
+
 	public CompositeTransactionService() {
 		super(TransactionAnalyzer.ID);
 	}
@@ -38,7 +39,7 @@ public class CompositeTransactionService extends BaseCompositeModelService<Trans
 		return new RemoteTransactionService();
 	}
 
-	@Override
+    @Override
 	protected TransactionReport merge(ModelRequest request, List<ModelResponse<TransactionReport>> responses) {
 		if (responses.size() == 0) {
 			return null;
