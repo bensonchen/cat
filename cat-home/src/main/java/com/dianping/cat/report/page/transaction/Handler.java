@@ -24,7 +24,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.codehaus.plexus.logging.LogEnabled;
+import org.codehaus.plexus.logging.Logger;
 import org.unidal.lookup.annotation.Inject;
+import org.unidal.lookup.annotation.Named;
 import org.unidal.lookup.util.StringUtils;
 import org.unidal.web.mvc.PageHandler;
 import org.unidal.web.mvc.annotation.InboundActionMeta;
@@ -58,7 +61,7 @@ import com.dianping.cat.report.service.ModelRequest;
 import com.dianping.cat.report.service.ModelResponse;
 import com.dianping.cat.report.service.ModelService;
 
-public class Handler implements PageHandler<Context> {
+public class Handler implements PageHandler<Context>, LogEnabled {
 
 	@Inject
 	private GraphBuilder m_builder;
@@ -80,6 +83,8 @@ public class Handler implements PageHandler<Context> {
 
 	@Inject
 	private DomainGroupConfigManager m_configManager;
+
+    protected Logger m_logger;
 
 	@Inject(type = ModelService.class, value = TransactionAnalyzer.ID)
 	private ModelService<TransactionReport> m_service;
@@ -197,7 +202,12 @@ public class Handler implements PageHandler<Context> {
 		}
 	}
 
-	@Override
+    @Override
+    public void enableLogging(Logger logger) {
+        m_logger = logger;
+    }
+
+    @Override
 	@PayloadMeta(Payload.class)
 	@InboundActionMeta(name = "t")
 	public void handleInbound(Context ctx) throws ServletException, IOException {
@@ -209,7 +219,7 @@ public class Handler implements PageHandler<Context> {
 	public void handleOutbound(Context ctx) throws ServletException, IOException {
 		Model model = new Model(ctx);
 		Payload payload = ctx.getPayload();
-
+		m_logger.info("<#> handleOutbound payload : "+payload.toString());
 		normalize(model, payload);
 		String domain = payload.getDomain();
 		Action action = payload.getAction();
