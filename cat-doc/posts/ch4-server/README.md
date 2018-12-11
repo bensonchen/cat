@@ -101,13 +101,7 @@ CAT主要由以下组件组成：
         ```
 - Windows
 
-<<<<<<< HEAD
-    对程序运行盘下的/data/appdatas/cat和/data/applogs/cat有读写权限。`例如cat服务运行在e盘的tomcat中，则需要对e:/data/appdatas/cat和e:/data/applogs/cat有读写权限。建议windows用户在所有盘都建一个，然后最后check下哪个盘里面有文件增加，就知道使用的是哪个盘了，然后在把其他盘的文件删掉。注意cat会在/data/appdatas/cat/下面增加一个*.mark文件`
-    
-=======
-    对程序运行盘下的/data/apps/cat/datas和/data/apps/cat/logs有读写权限。`例如cat服务运行在e盘的tomcat中，则需要对e:/data/apps/cat/datas和e:/data/apps/cat/logs有读写权限。`
-
->>>>>>> a46a1dd5c1f6579b813d32387ebd22ea74a99911
+    对程序运行盘下的/data/apps/cat/datas和/data/apps/cat/logs有读写权限。`例如cat服务运行在e盘的tomcat中，则需要对e:/data/apps/cat/datas和e:/data/apps/cat/logs有读写权限。建议windows用户在所有盘都建一个，然后最后check下哪个盘里面有文件增加，就知道使用的是哪个盘了，然后在把其他盘的文件删掉。注意cat会在/data/apps/cat/datas下面增加一个*.mark文件`
 
 #### **步骤3：** 配置/data/apps/cat/datas/client.xml
 
