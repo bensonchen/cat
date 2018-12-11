@@ -43,7 +43,7 @@ int g_log_file_perDay = 1;
 int g_log_permissionOpt = CLOG_ALL;
 
 #if defined(__linux__) || defined(__APPLE__)
-char *g_log_save_filepath = "/data/applogs/cat/cat";
+char *g_log_save_filepath = "/data/apps/cat/logs/cat";
 #else
 char *g_log_save_filepath = "CatInnerLog";
 #endif

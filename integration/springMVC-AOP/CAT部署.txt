@@ -129,8 +129,8 @@ C、修改Ping告警配置
      在resources资源文件META-INF下新建app.properties，注意是src/main/resources/META-INF/文件夹。
      内容如：app.name=${appName}；appName表示项目名
 2.  配置客户端文件，拷贝client.xml文件
-   A、Linux\Mac 到/data/appdatas/cat下
-   B、Windows 到系统运行盘的根目录/data/appdatas/cat下
+   A、Linux\Mac 到/data/apps/cat/datas下
+   B、Windows 到系统运行盘的根目录/data/apps/cat/datas下
    打开/data/apps/cat/datas/client.xml客户端配置文件
    <?xml version="1.0" encoding="utf-8"?>
     <config mode="client" xmlns:xsi="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="config.xsd">
@@ -152,7 +152,7 @@ C、修改Ping告警配置
   * http-port : 配置服务端（cat-home）对外HTTP协议开启端口, 如：tomcat默认是8080端口，若未指定，默认为8080端口;
 
 Cat监控机配置
-在/data/appdatas/cat下，配置client.xml
+在/data/apps/cat/datas下，配置client.xml
 
 <?xml version="1.0" encoding="utf-8"?>
 
