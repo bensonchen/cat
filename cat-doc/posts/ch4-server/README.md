@@ -42,7 +42,7 @@ docker exec <container_id> bash -c "mysql -uroot -Dcat < /init.sql"
 * Linux 2.6以及之上（2.6内核才可以支持epoll），线上服务端部署请使用Linux环境，Mac以及Windows环境可以作为开发环境，美团点评内部CentOS 6.5
 * Java  6，7，8，服务端推荐是用jdk7的版本，客户端jdk6、7、8都支持
 * Maven 3及以上
-* MySQL 5.6，5.7，更高版本MySQL都不建议使用，不清楚兼容性
+* MySQL 5.6，5.7，其他版本MySQL都不建议使用，不清楚兼容性（Mysql8肯定不兼容）
 * J2EE容器建议使用tomcat，建议使用推荐版本7.*.*或8.0.*
 * Hadoop环境可选，一般建议规模较小的公司直接使用磁盘模式，可以申请CAT服务端，500GB磁盘或者更大磁盘，这个磁盘挂载在/data/目录上
 
@@ -101,8 +101,8 @@ CAT主要由以下组件组成：
         ```
 - Windows
 
-    对程序运行盘下的/data/appdatas/cat和/data/applogs/cat有读写权限。`例如cat服务运行在e盘的tomcat中，则需要对e:/data/appdatas/cat和e:/data/applogs/cat有读写权限。`
-
+    对程序运行盘下的/data/appdatas/cat和/data/applogs/cat有读写权限。`例如cat服务运行在e盘的tomcat中，则需要对e:/data/appdatas/cat和e:/data/applogs/cat有读写权限。建议windows用户在所有盘都建一个，然后最后check下哪个盘里面有文件增加，就知道使用的是哪个盘了，然后在把其他盘的文件删掉。注意cat会在/data/appdatas/cat/下面增加一个*.mark文件`
+    
 
 #### **步骤3：** 配置/data/apps/cat/datas/client.xml
 
@@ -185,7 +185,7 @@ CAT主要由以下组件组成：
 
 - 源码构建
 
-    1. 在cat的源码目录，执行`mvn clean install -DskipTests`
+    1. 在cat的源码目录，执行`mvn clean install -DskipTests`  [建议使用master代码分支，所有的bug fix都会同步在master分支上]
     2. 如果发现cat的war打包不通过，CAT所需要依赖jar都部署在 http://cat.meituan.com/nexus/
     3. 可以配置这个公有云的仓库地址到本地Maven配置（一般为~/.m2/settings.xml)，理论上不需要配置即可，可以参考cat的pom.xml配置：   
     
@@ -218,7 +218,7 @@ CAT主要由以下组件组成：
 
     1.	将cat.war部署到本机tomcat的webapps下，启动tomcat。     
     2.	打开控制台的URL，http://127.0.0.1:8080/cat/s/config?op=routerConfigUpdate  
-    
+    3.  把下面的xml文件的127.0.0.1 替换为你本机的实际的内网IP，比如说192.168.1.1 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <router-config backup-server="127.0.0.1" backup-server-port="2280">
@@ -235,7 +235,7 @@ CAT主要由以下组件组成：
 
     1.	将cat.war部署到10.1.1.1的tomcat的webapps下，启动tomcat     
     2.	打开控制台的URL，http://10.1.1.1:8080/cat/s/config?op=routerConfigUpdate  
-    
+    3.  这里面你需要根据实际你自己集群IP来替换下面xml中的10.1.1.1，10.1.1.2，10.1.1.3
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <router-config backup-server="10.1.1.1" backup-server-port="2280">
@@ -282,7 +282,7 @@ CAT主要由以下组件组成：
 
 - 本机模式
 
-    本机模式可直接复制以下内容，点击提交。
+    本机模式可直接复制以下内容，并且修改127.0.0.1为实际的内网IP，然后点击提交。
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -294,7 +294,7 @@ CAT主要由以下组件组成：
              <property name="send-machine" value="false"/>
              <property name="alarm-machine" value="false"/>
              <property name="hdfs-enabled" value="false"/>
-             <property name="remote-servers" value="127.0.0.1:8080"/>
+             <property name="remote-servers" value="127.0.0.1:8080"/>  <!-- 本机模式这个IP替换为cat拿到的内网IP-->
           </properties>
           <storage  local-base-dir="/data/apps/cat/datas/bucket/" max-hdfs-storage-time="15" local-report-storage-time="7" local-logivew-storage-time="7">
             <hdfs id="logview" max-size="128M" server-uri="hdfs://10.1.77.86/user/cat" base-dir="logview"/>
