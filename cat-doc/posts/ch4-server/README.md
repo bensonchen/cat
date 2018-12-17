@@ -65,6 +65,7 @@ CAT主要由以下组件组成：
 3. 初始化/data/目录，配置几个配置文件/data/apps/cat/datas/*.xml 几个配置文件，具体下面有详细说明
 4. `打包并重命名为cat.war`，放入tomcat容器webapps根目录下，并启动tomcat
 5. 修改服务器配置、及路由配置，重启tomcat
+6. 默认的cat的登陆用户名密码为admin,admin
 
 
 #### **步骤1：** 部署tomcat
@@ -191,7 +192,7 @@ CAT主要由以下组件组成：
 - 源码构建
 
     1. 在cat的源码目录，执行`mvn clean install -DskipTests`  [建议使用master代码分支，所有的bug fix都会同步在master分支上]
-    2. 如果发现cat的war打包不通过，CAT所需要依赖jar都部署在 http://cat.meituan.com/nexus/
+    2. 如果发现cat的war打包不通过，CAT所需要依赖jar都部署在 http://unidal.org/nexus/
     3. 可以配置这个公有云的仓库地址到本地Maven配置（一般为~/.m2/settings.xml)，理论上不需要配置即可，可以参考cat的pom.xml配置：   
     
     ```xml
@@ -204,7 +205,7 @@ CAT主要由以下组件组成：
       </repository>
       <repository>
          <id>unidal.releases</id>
-         <url>http://cat.meituan.com/nexus/content/repositories/releases/</url>
+         <url>http://unidal.org/nexus/content/repositories/releases/</url>
       </repository>
     </repositories>
     ```
@@ -213,7 +214,7 @@ CAT主要由以下组件组成：
 
     1. 如果自行打包仍然问题，请使用下面链接进行下载：  
     
-        http://cat.meituan.com/nexus/service/local/repositories/releases/content/com/dianping/cat/cat-home/3.0.0/cat-home-3.0.0.war 
+        http://unidal.org/nexus/service/local/repositories/releases/content/com/dianping/cat/cat-home/3.0.0/cat-home-3.0.0.war 
     
     2. 官方的cat的master版本，`重命名为cat.war进行部署，注意此war是用jdk8，服务端请使用jdk8版本`
     
@@ -221,9 +222,10 @@ CAT主要由以下组件组成：
 
 - 本机模式
 
-    1.	将cat.war部署到本机tomcat的webapps下，启动tomcat。     
+    1.	将cat.war部署到本机tomcat的webapps下，注意这个目录下仅仅保留一个cat.war，其他相关东西一概删掉，启动tomcat。  注意这边一定要检查下tomcat重启之后是不是只有一个tomcat进程，很多人tomcat重启其实之前tomcat进程没有杀干净，导致后续启动出错       
     2.	打开控制台的URL，http://127.0.0.1:8080/cat/s/config?op=routerConfigUpdate  
     3.  把下面的xml文件的127.0.0.1 替换为你本机的实际的内网IP，比如说192.168.1.1 
+   
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <router-config backup-server="127.0.0.1" backup-server-port="2280">
@@ -238,7 +240,7 @@ CAT主要由以下组件组成：
 
 - 集群模式
 
-    1.	将cat.war部署到10.1.1.1的tomcat的webapps下，启动tomcat     
+    1.	将cat.war部署到10.1.1.1的tomcat的webapps下，注意这个目录下仅仅保留一个cat.war，其他相关东西一概删掉，启动tomcat，注意这边一定要检查下tomcat重启之后是不是只有一个tomcat进程，很多人tomcat重启其实之前tomcat进程没有杀干净，导致后续启动出错     
     2.	打开控制台的URL，http://10.1.1.1:8080/cat/s/config?op=routerConfigUpdate  
     3.  这里面你需要根据实际你自己集群IP来替换下面xml中的10.1.1.1，10.1.1.2，10.1.1.3
     ```xml
@@ -329,7 +331,7 @@ CAT主要由以下组件组成：
     
     1. 建议选取一台10.1.1.1 负责角色有控制台、告警端、任务机，建议配置域名访问CAT，就配置一台机器10.1.1.1一台机器挂在域名下面
     2. 10.1.1.2，10.1.1.3 负责消费机处理，这样能做到有效隔离，任务机、告警等问题不影响实时数据处理
-    3. remote-servers 这个一定要配置正确，端口号为8080，这里面的remote-servers为10.1.1.1:8080,10.1.1.2:8080,10.1.1.3:8080
+    3. remote-servers 这个一定要配置正确，端口号为8080，这里面的remote-servers为10.1.1.1:8080,10.1.1.2:8080,10.1.1.3:8080，如果显示出问题服务端数据，一般是这里面的配置IP或者PORT有问题
     4. 完成以上步骤，重启下当前CAT节点
     
     配置的sample如下： id="default"是默认的配置信息，server id="10.1.1.1" 如下的配置是表示10.1.1.1这台服务器的节点配置覆盖default的配置信息，比如下面的job-machine，alarm-machine，send-machine为true。
