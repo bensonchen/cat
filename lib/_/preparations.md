@@ -4,7 +4,7 @@
 
     Make sure that you have **read and write (>=0644)** permission of the created directory.
 
-2. Create `//data/apps/cat/logs` directory. (optional)
+2. Create `/data/apps/cat/logs` directory. (optional)
 
     This directory is used for preserving debug logs, which can be very useful while debugging, **read and write** permission is also required.
 

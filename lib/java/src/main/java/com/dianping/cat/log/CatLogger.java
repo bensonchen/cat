@@ -32,7 +32,7 @@ public class CatLogger {
     private String lastPath;
     private boolean devMode;
     private ReentrantLock lock = new ReentrantLock();
-    private static final String DEFAULT_BASE_DIR = "//data/apps/cat/logs";
+    private static final String DEFAULT_BASE_DIR = "/data/apps/cat/logs";
     private static CatLogger LOGGER = new CatLogger();
 
     public static CatLogger getInstance() {
