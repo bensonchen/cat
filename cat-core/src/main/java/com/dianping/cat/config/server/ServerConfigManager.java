@@ -319,13 +319,13 @@ public class ServerConfigManager implements LogEnabled, Initializable {
 		}
 		return 1000; // 1 second
 	}
-
+	//TODO 处理线程数
 	public int getMessageDumpThreads() {
-		return Integer.parseInt(getProperty("message-dumper-thread", "5"));
+		return Integer.parseInt(getProperty("message-dumper-thread", "2"));
 	}
 
 	public int getMessageProcessorThreads() {
-		return Integer.parseInt(getProperty("message-processor-thread", "20"));
+		return Integer.parseInt(getProperty("message-processor-thread", "5"));
 	}
 
 	public ExecutorService getModelServiceExecutorService() {
@@ -333,7 +333,7 @@ public class ServerConfigManager implements LogEnabled, Initializable {
 	}
 
 	public int getModelServiceThreads() {
-		return Integer.parseInt(getProperty("model-service-thread", "100"));
+		return Integer.parseInt(getProperty("model-service-thread", "5"));
 	}
 
 	public String getProperty(String name, String defaultValue) {
@@ -364,7 +364,7 @@ public class ServerConfigManager implements LogEnabled, Initializable {
 	}
 
 	public int getBlockDumpThread() {
-		return Integer.parseInt(getProperty("block-dump-thread", "5"));
+		return Integer.parseInt(getProperty("block-dump-thread", "2"));
 	}
 
 	public String getStorageCompressType() {

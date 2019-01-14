@@ -263,8 +263,8 @@ public class StatusInfoCollector extends BaseVisitor {
 	public void visitStatus(StatusInfo status) {
 		//TODO 设置心跳上报信息种类
 		status.setTimestamp(new Date());
-		status.setOs(new OsInfo());
-		status.setDisk(new DiskInfo());
+//		status.setOs(new OsInfo());
+//		status.setDisk(new DiskInfo());
 		status.setRuntime(new RuntimeInfo());
 		status.setMemory(new MemoryInfo());
 		status.setThread(new ThreadsInfo());
